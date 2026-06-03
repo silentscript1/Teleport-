@@ -1,0 +1,205 @@
+if not game:IsLoaded() then game.Loaded:Wait() end
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Lighting = game:GetService("Lighting")
+local RunService = game:GetService("RunService")
+
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
+
+local SHODIE_ID = "rbxassetid://13579404463"
+
+local Window = WindUI:CreateWindow({
+	Title = "SILENT LUXURY",
+	Author = "ELITE",
+	Icon = SHODIE_ID,
+	Size = UDim2.fromOffset(850, 520),
+	Theme = "Dark",
+	Transparent = true,
+	Acrylic = true,
+	Background = SHODIE_ID,
+	BackgroundTransparency = 0.4,
+	
+
+
+-- Tags
+Window:Tag({ Title = "👑 FREE PLAN", Color = Color3.fromRGB(255,215,0) })
+Window:Tag({ Title = "🟢 WORKING", Color = Color3.fromRGB(0,255,100) })
+Window:Tag({
+    Title = "👤 "..LocalPlayer.Name,
+    Color = Color3.fromRGB(255,215,0)
+})
+
+-- FPS Counter
+local fps, frames, lastTime = 0, 0, tick()
+local fpsTag = Window:Tag({ Title = "FPS: 0", Color = Color3.fromRGB(0, 255, 100) })
+
+RunService.Heartbeat:Connect(function()
+	frames += 1
+	if tick() - lastTime >= 1 then
+		fps = frames
+	frames = 0
+		lastTime = tick()
+		fpsTag:SetTitle("FPS: "..fps)
+		fpsTag:SetColor(fps >= 60 and Color3.fromRGB(0, 255, 100) or fps >= 30 and Color3.fromRGB(255, 255, 0) or Color3.fromRGB(255, 0, 0))
+	end
+end)
+
+-- ================= INFO =================
+local InfoTab = Window:Tab({ Title = "DASHBOARD", Icon = "crown" })
+
+InfoTab:Paragraph({
+    Title = "👑 SILENT PREMIUM",
+    Desc = "Versi eksklusif dengan fitur terkunci dan performa maksimal.\nRank: Premium User\nStatus: Active"
+})
+
+InfoTab:Paragraph({
+    Title = "SYSTEM INFO",
+    Desc = "🔥 Version: V4.0\n⚡ Executor: "..identifyexecutor()..
+    "\n🛡️ Security: Active\n👑 Owner: SILENT EXPLOITS OFFICIALS"
+})
+
+InfoTab:Button({
+    Title = "JOIN DISCORD",
+    Desc = "Dapatkan update & key terbaru",
+    Callback = function()
+        setclipboard("https://discord.gg/6K6uaGhvv")
+        WindUI:Notify({Title = "COPIED", Content = "Link Discord dicopy!", Duration = 3})
+    end
+})
+-- ================= MOUNT SIBUATAN =================
+local MountTab = Window:Tab({ Title = "MOUNT DERACE", Icon = "mountain" })
+
+-- ISI KOORDINAT CP DISINI - X, Y, Z
+local CP1 = Vector3.new(-386.6235656738281, 141.78591918945312, 361.76385498046875) 
+local CP2 = Vector3.new(-607.4466552734375, 373.9493408203125, 694.8999633789062)
+local CP3 = Vector3.new(-611.6942749023438, 505.26824951171875, 1161.265625)
+local CP4 = Vector3.new(-637.5999755859375, 657.9639892578125, 1532.7547607421875)
+local CP5 = Vector3.new(-761.5657348632812, 841.9829711914062, 1914.590087890625)
+local CP6 = Vector3.new(-938.591064453125, 966.2117919921875, 2390.58935546875)
+local CP7 = Vector3.new(-1144.888550, 1217.430664, 2908.112549)
+local CP8 = Vector3.new(-1161.896729, 1401.603516, 3292.932129)
+local CP9 = Vector3.new(-1042.817627, 1880.729492, 3784.892090)
+-- Fungsi teleport
+local function tp(pos)
+	local hrp = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+	if hrp then 
+	hrp.CFrame = CFrame.new(pos + Vector3.new(0, 3, 0))
+	WindUI:Notify({Title = "DONE", Content = "Teleport Checkpoint Done!", Duration = 2}) 
+	end
+end
+
+MountTab:Section({ Title = "⛰️ MOUNT DERACE 8 CHECKPOINT" })
+
+MountTab:Paragraph({
+    Title = "📣INFORMATION",
+    Desc = "CLICK TOMBOL DIBAWAH UNTUK TELEPORT CHECKPOINT 1-8 THANKS"
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 1",
+	Desc = "Teleport langsung ke checkpoint 1 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP1 belum di set!", Duration = 3})
+		else 
+			tp(CP1) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 2",
+	Desc = "Teleport langsung ke checkpoint 2 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP2 belum di set!", Duration = 3})
+		else 
+			tp(CP2) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 3",
+	Desc = "Teleport langsung ke checkpoint 3 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP3 belum di set!", Duration = 3})
+		else 
+			tp(CP3) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 4",
+	Desc = "Teleport langsung ke checkpoint 4 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP4 belum di set!", Duration = 3})
+		else 
+			tp(CP4) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP5",
+	Desc = "Teleport langsung ke checkpoint 5 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP5 belum di set!", Duration = 3})
+		else 
+			tp(CP5) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 6",
+	Desc = "Teleport langsung ke checkpoint 6 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP6 belum di set!", Duration = 3})
+		else 
+			tp(CP6) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 7",
+	Desc = "Teleport langsung ke checkpoint 7 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP7 belum di set!", Duration = 3})
+		else 
+			tp(CP7)
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT CP 8",
+	Desc = "Teleport langsung ke checkpoint 8 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP8 belum di set!", Duration = 3})
+		else 
+			tp(CP8) 
+		end
+	end
+})
+
+MountTab:Button({
+	Title = "🚀 TELEPORT SUMMIT ",
+	Desc = "Teleport langsung ke checkpoint 9 yang udah di set",
+	Callback = function() 
+		if CP5 == Vector3.new(0,0,0) then
+			WindUI:Notify({Title = "KOSONG", Content = "CP9local CP9 = Vector3.new(-1042.817627, 1880.729492, 3784.892090) belum di set!", Duration = 3})
+		else 
+			tp(CP9) 
+		end
+	end
+})
